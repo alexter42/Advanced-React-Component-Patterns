@@ -8,7 +8,13 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Advanced React Component Patterns</h1>
-          <TB onToggle = {on => console.log("toggle", on)}/>
+          <div>
+          <TB onToggle={on => console.log("toggle", on)}>
+            <TB.Off>The button is off </TB.Off>
+            <TB.Button/>
+            <TB.On> The button is on</TB.On>
+          </TB>
+          </div>
         </header>
       </div>
     );
