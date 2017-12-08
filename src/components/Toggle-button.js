@@ -40,6 +40,24 @@ ToggleButton.contextTypes = {
   [TOGGLE_CONTEXT] : PropTypes.object.isRequired,
 }
 
+
+export function withToggle(Component){
+  function Wrapper(props, context) {
+    const toggleContext = context[TOGGLE_CONTEXT]
+    return (
+      <Component {...toggleContext} {...props}/>
+    )
+  }
+  Wrapper.contextTypes = {
+    [TOGGLE_CONTEXT] : PropTypes.object.isRequired,
+  }
+  return Wrapper
+}
+
+
+
+
+
 class TB extends Component {
 
   static On = ToggleOn
