@@ -14,32 +14,19 @@ const Switch = ({on,onClick}) => {
 
 const TOGGLE_CONTEXT = "__togle__"
 
-function ToggleOn({children}, context) {
-  const {on} = context[TOGGLE_CONTEXT]
+const ToggleOn = withToggle(({on, children}) => {
   return on ? children : null
-}
-ToggleOn.contextTypes = {
-  [TOGGLE_CONTEXT] : PropTypes.object.isRequired,
-}
+})
 
-function ToggleOff({children}, context) {
-  const {on} = context[TOGGLE_CONTEXT]
+const ToggleOff = withToggle(({on, children}) => {
   return on ? null : children
-}
-ToggleOff.contextTypes = {
-  [TOGGLE_CONTEXT] : PropTypes.object.isRequired,
-}
+})
 
-function ToggleButton(props, context) {
-  const {on, toggle} = context[TOGGLE_CONTEXT]
+const ToggleButton = withToggle(({on, toggle, ...props}) => {
   return (
     <Switch on={on}  onClick={toggle} {...props}/>
   )
-}
-ToggleButton.contextTypes = {
-  [TOGGLE_CONTEXT] : PropTypes.object.isRequired,
-}
-
+})
 
 export function withToggle(Component){
   function Wrapper(props, context) {
@@ -53,10 +40,6 @@ export function withToggle(Component){
   }
   return Wrapper
 }
-
-
-
-
 
 class TB extends Component {
 
