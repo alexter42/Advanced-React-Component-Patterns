@@ -10,11 +10,11 @@ class App extends Component {
           <h1 className="App-title">Advanced React Component Patterns</h1>
 
           <TB onToggle={on => console.log("toggle", on)}>
-            <TB.Off>The button is off </TB.Off>
             <TB.Button/>
-            <div>
+            <h4>
+              <TB.Off>The button is off </TB.Off> 
               <TB.On> The button is on</TB.On>
-            </div>
+            </h4>
           </TB>
 
         </header>
