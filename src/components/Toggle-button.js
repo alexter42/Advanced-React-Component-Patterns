@@ -6,12 +6,13 @@ const Switch = ({on,onClick}) => {
 		<div className="switch" onClick={onClick}>
       <input type="checkbox" checked = {on} />
       <span className="slider round"></span>
-      </div>
+    </div>
 	)
 }
 
 
 class TB extends Component {
+  static defaultProps = {onToggle: () => {}}
   state = {on: false}
   toggle = () => 
     this.setState(({on}) => ({on: !on}), () => {
