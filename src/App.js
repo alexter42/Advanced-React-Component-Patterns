@@ -3,12 +3,20 @@ import './App.css';
 import TB, { withToggle } from'./components/Toggle-button';
 
 
-const ToggleComponent = withToggle(({on, toggle}) => (  
+const ToggleComponent = withToggle(({toggle: {on, toggle}}) => (  
   <button onClick={toggle}>
     {on ? "on":"of"}
   </button>
 ))
 
+const EventComponent = withToggle(
+  function MyEventComponent({on, toggle, event}) {
+    const props ={[event]: on}
+    return toggle.on ? ( <button {...props}>
+      The {event} event
+    </button>) : null
+    
+})
 
 class App extends Component {
   render() {
@@ -23,7 +31,13 @@ class App extends Component {
               <TB.Off>The button is off </TB.Off> 
               <TB.On> The button is on</TB.On>
             </h4>
+            <hr/>
             <ToggleComponent/>
+            <hr/>
+            <EventComponent
+              event="onClick"
+              on= {e=> alert(e.type)}
+            />
         </TB>
       </div>
     );

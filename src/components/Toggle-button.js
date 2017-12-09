@@ -14,15 +14,15 @@ const Switch = ({on,onClick}) => {
 
 const TOGGLE_CONTEXT = "__togle__"
 
-const ToggleOn = withToggle(({on, children}) => {
+const ToggleOn = withToggle(({toggle: {on}, children}) => {
   return on ? children : null
 })
 
-const ToggleOff = withToggle(({on, children}) => {
+const ToggleOff = withToggle(({toggle: {on}, children}) => {
   return on ? null : children
 })
 
-const ToggleButton = withToggle(({on, toggle, ...props}) => {
+const ToggleButton = withToggle(({toggle: {on, toggle}, ...props}) => {
   return (
     <Switch on={on}  onClick={toggle} {...props}/>
   )
@@ -32,7 +32,7 @@ export function withToggle(Component){
   function Wrapper(props, context) {
     const toggleContext = context[TOGGLE_CONTEXT]
     return (
-      <Component {...toggleContext} {...props}/>
+      <Component {...props} toggle={toggleContext} />
     )
   }
   Wrapper.contextTypes = {
