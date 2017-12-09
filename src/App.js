@@ -5,7 +5,7 @@ import TB, { withToggle } from'./components/Toggle-button';
 
 const ToggleComponent = withToggle(({toggle: {on, toggle}}) => (  
   <button onClick={toggle}>
-    {on ? "on":"of"}
+    {on ? "on":"off"}
   </button>
 ))
 

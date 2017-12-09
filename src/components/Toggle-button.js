@@ -14,19 +14,19 @@ const Switch = ({on,onClick}) => {
 
 const TOGGLE_CONTEXT = "__togle__"
 
-const ToggleOn = withToggle(({toggle: {on}, children}) => {
+const ToggleOn = ({on, children}) => {
   return on ? children : null
-})
+}
 
-const ToggleOff = withToggle(({toggle: {on}, children}) => {
+const ToggleOff = ({toggle: {on}, children}) => {
   return on ? null : children
-})
+}
 
-const ToggleButton = withToggle(({toggle: {on, toggle}, ...props}) => {
+const ToggleButton = ({toggle: {on, toggle}, ...props}) => {
   return (
     <Switch on={on}  onClick={toggle} {...props}/>
   )
-})
+}
 
 export function withToggle(Component){
   function Wrapper(props, context) {
@@ -43,9 +43,9 @@ export function withToggle(Component){
 
 class TB extends Component {
 
-  static On = ToggleOn
-  static Off = ToggleOff
-  static Button = ToggleButton 
+  static On = withToggle(ToggleOn)
+  static Off = withToggle(ToggleOff)
+  static Button = withToggle(ToggleButton) 
 
   static defaultProps = {onToggle: () => {}}
 
