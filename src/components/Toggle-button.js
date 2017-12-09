@@ -14,7 +14,7 @@ const Switch = ({on,onClick}) => {
 
 const TOGGLE_CONTEXT = "__togle__"
 
-const ToggleOn = ({on, children}) => {
+const ToggleOn = ({toggle: {on}, children}) => {
   return on ? children : null
 }
 

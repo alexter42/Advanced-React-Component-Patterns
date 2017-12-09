@@ -28,7 +28,7 @@ class App extends Component {
         <TB onToggle={on => console.log("toggle", on)}>
             <TB.Button/>
             <h4>
-              <TB.Off>The button is off </TB.Off> 
+              <TB.Off>The button is off</TB.Off> 
               <TB.On> The button is on</TB.On>
             </h4>
             <hr/>
